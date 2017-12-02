@@ -1,0 +1,21 @@
+{
+  "name": "food_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "json": "^9.0.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0",
+    "pretty-error": "^2.1.1"
+  }
+}
