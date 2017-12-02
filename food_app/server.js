@@ -1,7 +1,9 @@
 const express  = require('express');
 const mongoose = require('mongoose');
 const morgan   = require('morgan');
-const session = require('express-session');
+const methodOverride = require('method-override');
+require('pretty-error').start();
+// const session = require('express-session');
 const app      = express();
 const PORT     = 3000;
 // const bcrypt = require('bcrypt');
@@ -22,6 +24,8 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err.message));
 db.on('connected', () => console.log('Mongo running: ', mongoURI));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
 
 // Will I need this? ~~~~~~
 // const usersModel = require('./models/users.js');
@@ -30,6 +34,10 @@ db.on('connected', () => console.log('Mongo running: ', mongoURI));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
+
+
 // // SESSION stuff ~~~~~~
 // app.use(session({
 //   secret: "sert54yruhgch",
@@ -59,3 +67,5 @@ app.listen(PORT, () => {
   console.log('Food app running on port: ', PORT);
   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 });
+
+module.exports = app;
