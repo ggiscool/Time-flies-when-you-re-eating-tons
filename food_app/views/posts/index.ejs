@@ -2,9 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Homepage</title>
   </head>
   <body>
-    Index of Posts
+    <h1>Time Flies When You're Eating Tons:</h1>
+    <br>
+    <h2>A Catalog of the Greatest Things I've ever Eaten</h2>
+
+    <br>
+
+    <form action="/posts/seed" method="POST">
+    <input type="submit" value="Seed">
+    </form>
+
+    <br>
+
+    <button class="btn btn-success"><a href='/posts/new'>Write a new post!</a></button>
+
+    <br>
+
+    <% for (let post of posts) { %>
+        <li>
+
+          <a href="/posts/<%= post._id %>"><h2> <%= post.caption %>
+          </h2></a>
+
+
+          <br>
+
+
+          <button class="btn btn-success"><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
+
+          <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Post">
+          </form>
+
+
+        </li>
+    <% } %>
+    </div>
   </body>
 </html>

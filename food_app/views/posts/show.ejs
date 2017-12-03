@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
 
-  </body>
+  SHOW
+
+  <br>
+
+  <h1><%= onePost.caption %></h1>
+
+    <img src="<%= onePost.img %>" alt="Post Image">
+    <h1><%= onePost.caption %></h1>
+    <h4>Post: </h4><%= onePost.post %>
+    <h4>Submitted by: </h4><%= onePost.submitted_by %>
+    <h4>Location: </h4><%= onePost.location %>
+    <h4>Link: </h4><%= onePost.link %>
+
+
+    <br>
+
+    <button><a href="/posts/<%=onePost._id%>/edit">EDIT</a> </button>
+
+
+    <br>
+
+    <button><a href='/posts'>Back to Posts</a></button>
+
+
+  </form>
+</body>
 </html>

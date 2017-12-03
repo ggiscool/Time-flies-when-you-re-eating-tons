@@ -2,9 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Edit</title>
   </head>
   <body>
-    Edit post page
+    <h3>Edit</h3>
+    <br>
+    <form action="/posts/<%=Post._id%>?_method=PUT" method="POST">
+
+      Picture: <input type="text" name="img" value="<%=Post.img%>"/><br/>
+      Caption: <input type="number" name="price" value="<%=Post.caption%>"/><br/>
+      Post: <input type="text" name="post" value="<%=Post.post%>"/><br/>
+      Submitted by: <input type="text" name="submitted_by" value="<%=Post.submitted_by%>"/><br/>
+      Location: <input type="text" name="location" value="<%=Post.location%>"/><br/>
+      Link: <input type="text" name="link" value="<%=Post.link%>"/></br>
+
+
+      <input type="submit" value="Submit Changes"/>
+      <a href="/posts">Back to homepage</a>
+    </form>
   </body>
 </html>
