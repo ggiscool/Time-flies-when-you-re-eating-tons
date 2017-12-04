@@ -10,7 +10,7 @@ const Post = require('../models/posts.js');
 router.get('/', async (req, res) => {
   //query a post model
   const allPosts = await Post.find();
-  console.log(allPosts);
+  // console.log(allPosts);
   // if (req.session.logged) {
     res.render('posts/index.ejs', {
       posts: allPosts

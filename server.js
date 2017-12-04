@@ -5,7 +5,6 @@ const methodOverride = require('method-override');
 require('pretty-error').start();
 const session = require('express-session');
 const app      = express();
-const PORT     = 3000;
 const bcrypt = require('bcrypt');
 
 //encrypt password ~~~~~~
@@ -15,8 +14,12 @@ console.log(hashedString);
 let test = bcrypt.compareSync('GG', hashedString);
 console.log(test);
 
+//process.env.PORT
+const PORT     = process.env.PORT || 3000;
+
+//process.env.MONGODB_URI
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Time-flies-when-you-re-eating-tons';
 // connect to database ~~~~~~
-const mongoURI = 'mongodb://localhost:27017/food_app';
 mongoose.connect(mongoURI, { useMongoClient: true});
 mongoose.Promise = global.Promise;
 
