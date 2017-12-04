@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 const morgan   = require('morgan');
 const methodOverride = require('method-override');
 require('pretty-error').start();
-// const session = require('express-session');
+const session = require('express-session');
 const app      = express();
 const PORT     = 3000;
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
-// //encrypt password ~~~~~~
-// const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
-// console.log(hashedString);
-//
-// let test = bcrypt.compareSync('GG', hashedString);
-// console.log(test);
+//encrypt password ~~~~~~
+const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
+console.log(hashedString);
+
+let test = bcrypt.compareSync('GG', hashedString);
+console.log(test);
 
 // connect to database ~~~~~~
 const mongoURI = 'mongodb://localhost:27017/food_app';
@@ -28,7 +28,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 
 // Will I need this? ~~~~~~
-// const usersModel = require('./models/users.js');
+const usersModel = require('./models/users.js');
 
 // middleware ~~~~~~
 app.use(express.urlencoded({ extended: false}));
@@ -38,25 +38,25 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 
-// // SESSION stuff ~~~~~~
-// app.use(session({
-//   secret: "sert54yruhgch",
-//   resave: false,
-//   saveUninitialized: false
-//   }));
+// SESSION stuff ~~~~~~
+app.use(session({
+  secret: "khgvcluygtud",
+  resave: false,
+  saveUninitialized: false
+  }));
 
 // controllers ~~~~~~
 const postsController = require('./controllers/posts.js');
 // // add in for COMMENTS ~~~~~~
 // const commentsController = require('./controllers/comments.js');
-// // add in for log-in/registration ~~~~~~
-// const sessionsController = require('./controllers/session.js');
+// add in for log-in/registration ~~~~~~
+const sessionsController = require('./controllers/sessions.js');
 
 app.use('/posts', postsController);
 // //add in for COMMENTS ~~~~~~
 // app.use('/comments', commentsController);
-// //add in for LOG-IN/registration
-// app.use('/user', sessionsController);
+//add in for LOG-IN/registration
+app.use('/user', sessionsController);
 
 // ROOT route ~~~~~~
 app.get('/', (req, res) => res.redirect('/posts'));
