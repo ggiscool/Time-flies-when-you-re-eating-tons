@@ -8,11 +8,11 @@ const app      = express();
 const bcrypt = require('bcrypt');
 
 //encrypt password ~~~~~~
-const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
-console.log(hashedString);
+// const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
+// console.log(hashedString);
 
-let test = bcrypt.compareSync('GG', hashedString);
-console.log(test);
+// let test = bcrypt.compareSync('GG', hashedString);
+// console.log(test);
 
 //process.env.PORT
 const PORT     = process.env.PORT || 3000;

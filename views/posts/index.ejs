@@ -5,10 +5,14 @@
     <title>Homepage</title>
   </head>
   <body>
-    <h1>Time Flies When You're Eating Tons:</h1>
-    <h2>A Catalog of the Greatest Things I've ever Eaten</h2>
+    <header>
 
-    <br>
+    <% if (username) { %>
+      Hi, <%= username %>.<a href="/user/logout"> Log out</a>
+      <% } %>
+
+    </header>
+    <% include ../partials/header.ejs %>
 
     <form action="/posts/seed" method="POST">
     <input type="submit" value="Seed">

@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
-const User   = require('../models/users.js');
+const User   = require('../models/users');
 
 router.get('/login', (req, res) => {
   // console.log(req.session);
@@ -10,33 +10,59 @@ router.get('/login', (req, res) => {
   });
 });
 
-router.post('/login',  async(req, res) => {
+router.post('/login', async (req, res) => {
+  console.log(req.body)
   try {
-  const user = await User.findOne({username: req.body.username});
-  if (bcrypt.compareSync(req.body.password, user.password)){
-    req.session.username = req.body.username;
-    req.session.logged = true;
-    console.log(req.session);
-    res.redirect('/');
-  } else {
-  console.log('bad password');
-  req.session.message = "Username or password are incorrect";
-  res.redirect('/user/login');
-  }
-} catch (err) {
-  console.log(err);
+    //console.log('try working');
+    const foundUser = await User.findOne({username:req.body.username})
+    //const foundUser = await User.findOne({username:req.body.username});
+    console.log('found user:', foundUser);
+    if (bcrypt.compareSync(req.body.password, foundUser.password)){
+      req.session.username = req.body.username;
+      req.session.logged = true;
+      console.log(req.session);
+      res.redirect('profile/' + foundUser.id);
+    } else {
+    console.log('bad password');
+    req.session.message = "Username or password are incorrect";
+    res.redirect('users/login');
+    }
+  } catch (err) {
+    console.log(err);
   }
 // });
 
-  //save username to session variable
-  req.session.username = req.body.username;
-  //log info
-  req.session.logged = true;
-  console.log(req.session);
-  //redirect back home
-  res.redirect('/');
+  // //save username to session variable
+  // req.session.username = req.body.username;
+  // //log info
+  // req.session.logged = true;
+  // console.log(req.session);
+  // //redirect back home
+  // res.redirect('/');
+  res.send('this is NOT working')
 });
 
+// get profile by user id
+router.get('/profile/:id', async (req, res) => {
+  try{
+    const foundId = await User.findOne({_id: req.params.id});
+    res.render('./users/profile.ejs', {foundId});
+    // console.log(foundId);
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+// //send from new profile to make a new post
+// router.get('/profile/new/:id', (req, res) => {
+//   console.log("working newwww");
+//   res.render('./posts/new.ejs')
+// });
+//
+// //execute changes to db
+// router.put('/profile/new/:id', (req, res) => {
+//
+// })
 
 //where user will enter personal info to register
 router.post('/register', async (req, res, next) => {
@@ -68,13 +94,13 @@ console.log(err);
 });
 
 
-router.get('/', (req, res) => {
-  // we need to render the login view.
-});
-
-router.post('/', (req, res) => {
-  // After posting the form to this route, we should analyze the session variables
-});
+// router.get('/', (req, res) => {
+//   // we need to render the login view.
+// });
+//
+// router.post('/', (req, res) => {
+//   // After posting the form to this route, we should analyze the session variables
+// });
 
 router.get('/logout', (req, res) => {
   // here we destroy the session

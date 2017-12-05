@@ -11,14 +11,15 @@ router.get('/', async (req, res) => {
   //query a post model
   const allPosts = await Post.find();
   // console.log(allPosts);
-  // if (req.session.logged) {
+  // console.log(req.session.username);
+  if (req.session.logged) {
     res.render('posts/index.ejs', {
-      posts: allPosts
-      // username: req.session.username
-  //   });
-  // } else {
-  //   res.redirect('/user/login');
-})
+      posts: allPosts,
+      username: req.session.username
+    });
+  } else {
+    res.redirect('/user/login');
+}
 });
 
 //SEED posts
@@ -70,7 +71,6 @@ router.get('/:id', async (req, res) => {
   res.render('posts/show.ejs', {onePost: onePost})
 });
 
-//POST route
 
 //DELETE
 router.delete('/:id', async (req, res) =>{
