@@ -50,16 +50,19 @@ app.use(session({
 
 // controllers ~~~~~~
 const postsController = require('./controllers/posts.js');
+const sessionsController = require('./controllers/sessions.js');
+const profilesController = require('./controllers/profiles.js');
 // // add in for COMMENTS ~~~~~~
 // const commentsController = require('./controllers/comments.js');
 // add in for log-in/registration ~~~~~~
-const sessionsController = require('./controllers/sessions.js');
 
 app.use('/posts', postsController);
+app.use('/user', sessionsController);
+app.use('/profile', profilesController);
 // //add in for COMMENTS ~~~~~~
 // app.use('/comments', commentsController);
 //add in for LOG-IN/registration
-app.use('/user', sessionsController);
+
 
 // ROOT route ~~~~~~
 app.get('/', (req, res) => res.redirect('/posts'));

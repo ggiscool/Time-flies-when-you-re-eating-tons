@@ -5,12 +5,16 @@
     <title></title>
   </head>
   <body>
-    <header>
 
-    <% console.log(foundId) %>
+    <% for (let post of posts) { %>
+      <p><%= post.caption %></p>
 
-      <button type="button" onclick="location.href = '/posts/new/<%= foundId._id%>';">Write a new post!</button>
+    }
 
-    </header>
+      <button class="btn btn-success"><a href='/posts/new'>Write a new post!</a></button>
+
+      <button><a href='/posts'>Back to Posts!</a></button>
+
+
   </body>
 </html>

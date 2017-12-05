@@ -3,6 +3,8 @@ const router  = express.Router();
 
 // link to the models ~~~~~~
 const Post = require('../models/posts.js');
+const User   = require('../models/users.js');
+
 //for when we add COMMENTS ~~~~~~
 // const Comment = require('../models/comments.js');
 
@@ -22,6 +24,7 @@ router.get('/', async (req, res) => {
 }
 });
 
+
 //SEED posts
 router.post('/seed', async (req, res)=>{
   const seedPosts = await Post.create([
@@ -39,6 +42,13 @@ router.post('/seed', async (req, res)=>{
       post: "I love meat dumplings. Any kind of meat wrapped up and fried or steamed (or whatever) is chill with me. Also, I did not eat most vegeatables until I was of age to drink. That being said, these spinach dumplings are the most delicious dumplings I have ever had. They are huge, maybe 3-bite dumplings, soaked in a spicy/sour oily sauce. They are so big and filling that you could totally eat them as a (not very well-rounded) meal, as I have many times. An old neighbor in Greenpoint, Brooklyn recommended I go to the, since-relocated, Xi'an Famous Foods location a a few blocks from my old apartment, and I went probably once a week the remainder of the time I lived in Greenpoint, even when they reopened much further away. 10/10 would move back to Brooklyn for this dish.",
       submitted_by: 'GG Gonzalez',
       link: "http://xianfoods.com/menu/"
+    },
+    {
+      img: "https://clovereats.files.wordpress.com/2015/06/rubamba-5.jpg",
+      caption: "Colombian Chancho Arepas",
+      post: "A truly delicious South American dish. Delicious pulled pork on a bed of yellow rice, surrounded by perfectly-cooked plantains and drizzled in guacamole. You can always judge latin-american food by the plantians, and these are perfect. The only downside is that the prices are about $5 more expensive at the restaurant than at their food truck, with the only difference being presentation and ambience. 10/10 would walk to the cart every day.",
+      submitted_by: 'GG Gonzalez',
+      link: "http://www.rubamba.com/usa/"
     }
   ]);
 
@@ -60,7 +70,10 @@ router.post('/', async (req, res) => {
 
 //new ROUTES
 router.get('/new', async (req, res) => {
-  res.render('posts/new.ejs')
+  const oneUser = await User.find({username: req.session.username});
+  // const oneUser = req.session.id;
+  console.log("User data ", oneUser);
+  res.render('posts/new.ejs', {oneUser});
 });
 
 //SHOW route

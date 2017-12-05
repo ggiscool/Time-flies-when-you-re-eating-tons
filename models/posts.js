@@ -6,7 +6,8 @@ const postSchema = mongoose.Schema({
   post: { type: String, require: true },
   submitted_by: { type: String, require: true },
   location: String,
-  link: String
+  link: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 

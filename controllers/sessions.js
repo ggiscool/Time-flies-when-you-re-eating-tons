@@ -10,36 +10,29 @@ router.get('/login', (req, res) => {
   });
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   console.log(req.body)
   try {
     //console.log('try working');
-    const foundUser = await User.findOne({username:req.body.username})
-    //const foundUser = await User.findOne({username:req.body.username});
+    const foundUser = await User.findOne({username:req.body.username});
     console.log('found user:', foundUser);
     if (bcrypt.compareSync(req.body.password, foundUser.password)){
+      //save username to session variable
       req.session.username = req.body.username;
+      //log info
       req.session.logged = true;
       console.log(req.session);
-      res.redirect('profile/' + foundUser.id);
+      //redirect to user profile
+      res.redirect('/');
     } else {
     console.log('bad password');
     req.session.message = "Username or password are incorrect";
-    res.redirect('users/login');
+    res.redirect('/user/login');
     }
   } catch (err) {
     console.log(err);
+    res.send('this is NOT working')
   }
-// });
-
-  // //save username to session variable
-  // req.session.username = req.body.username;
-  // //log info
-  // req.session.logged = true;
-  // console.log(req.session);
-  // //redirect back home
-  // res.redirect('/');
-  res.send('this is NOT working')
 });
 
 // get profile by user id
@@ -52,6 +45,7 @@ router.get('/profile/:id', async (req, res) => {
     res.send(err.message);
   }
 });
+
 
 // //send from new profile to make a new post
 // router.get('/profile/new/:id', (req, res) => {
