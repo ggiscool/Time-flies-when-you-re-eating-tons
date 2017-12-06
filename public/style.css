@@ -1,0 +1,15 @@
+* {
+  background-color: pink;
+}
+
+img {
+  max-height: 250px;
+}
+
+li {
+  text-align: center;
+  display: block;
+
+h1 {
+  text-align: center;
+}

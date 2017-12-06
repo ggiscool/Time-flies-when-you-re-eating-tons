@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Homepage</title>
+  <% include ../partials/head.ejs %>
   </head>
   <body>
     <header>
@@ -14,11 +13,11 @@
     </header>
     <% include ../partials/header.ejs %>
 
-    <form action="/posts/seed" method="POST">
+    <!-- <form action="/posts/seed" method="POST">
     <input type="submit" value="Seed">
-    </form>
+    </form> -->
 
-
+<button class="btn btn-success"><a href='/users/profile'>**Broken Profile button**</a></button>
     <br>
 
     <button class="btn btn-success"><a href='/posts/new'>Write a new post!</a></button>
@@ -28,11 +27,8 @@
     <% for (let post of posts) { %>
         <li>
 
-          <a href="/posts/<%= post._id %>"><h2> <%= post.caption %>
+          <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %>
           </h2></a>
-
-
-          <br>
 
 
           <button class="btn btn-success"><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
@@ -41,6 +37,7 @@
             <input type="submit" value="Delete Post">
           </form>
 
+          <br>
 
         </li>
     <% } %>

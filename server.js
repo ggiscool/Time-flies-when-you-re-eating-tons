@@ -7,17 +7,18 @@ const session = require('express-session');
 const app      = express();
 const bcrypt = require('bcrypt');
 
-//encrypt password ~~~~~~
-// const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
-// console.log(hashedString);
+// encrypt password ~~~~~~
+const hashedString = bcrypt.hashSync('GG', bcrypt.genSaltSync(10));
+console.log(hashedString);
 
+//encryption test ~~~~~~
 // let test = bcrypt.compareSync('GG', hashedString);
 // console.log(test);
 
-//process.env.PORT
+//process.env.PORT ~~~~~~
 const PORT     = process.env.PORT || 3000;
 
-//process.env.MONGODB_URI
+//process.env.MONGODB_URI ~~~~~~
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Time-flies-when-you-re-eating-tons';
 // connect to database ~~~~~~
 mongoose.connect(mongoURI, { useMongoClient: true});

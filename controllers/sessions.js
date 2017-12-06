@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 const User   = require('../models/users');
 
+//login get route
 router.get('/login', (req, res) => {
   // console.log(req.session);
   res.render('posts/login.ejs', {
@@ -10,6 +11,7 @@ router.get('/login', (req, res) => {
   });
 });
 
+//login post route
 router.post('/login', async (req, res, next) => {
   console.log(req.body)
   try {
@@ -96,10 +98,11 @@ console.log(err);
 //   // After posting the form to this route, we should analyze the session variables
 // });
 
+//logOUT get route
 router.get('/logout', (req, res) => {
   // here we destroy the session
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/user/login');
 });
 
 router.get('/update', (req, res) => {
