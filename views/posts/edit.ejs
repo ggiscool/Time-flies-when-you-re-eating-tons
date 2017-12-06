@@ -10,7 +10,7 @@
     <form action="/posts/<%=Post._id%>?_method=PUT" method="POST">
 
       Picture: <input type="text" name="img" value="<%=Post.img%>"/><br/>
-      Caption: <input type="number" name="price" value="<%=Post.caption%>"/><br/>
+      Caption: <input type="text" name="caption" value="<%=Post.caption%>"/><br/>
       Post: <input type="text" name="post" value="<%=Post.post%>"/><br/>
       Submitted by: <input type="text" name="submitted_by" value="<%=Post.submitted_by%>"/><br/>
       Location: <input type="text" name="location" value="<%=Post.location%>"/><br/>

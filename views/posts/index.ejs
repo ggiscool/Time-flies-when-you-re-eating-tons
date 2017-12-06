@@ -7,7 +7,9 @@
     <header>
 
     <% if (username) { %>
-      Hi, <%= username %>.<a href="/user/logout"> Log out</a>
+      Hi, <%= username %>.
+      <br>
+      <a href="/user/logout"> Log out</a>
       <% } %>
 
     </header>
@@ -27,8 +29,9 @@
     <% for (let post of posts) { %>
         <li>
 
-          <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %>
-          </h2></a>
+          <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %></h2></a>
+
+          <h4><%= post.user %></h4>
 
 
           <button class="btn btn-success"><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
