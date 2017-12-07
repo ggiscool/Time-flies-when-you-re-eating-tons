@@ -1,8 +1,16 @@
+<div class="top">
 
-
-<header>
   <h1>Time Flies When You're Eating Tons:</h1>
   <h2>A Catalog of the Greatest Things I've Ever Eaten</h2>
-  <hr>
-  <br>
-</header>
+
+  <div class="left">
+    <% if (username) { %>
+      Hi, <%= username %>.
+      <% } %>
+  </div>
+  <div class="right">
+    <% if (username) { %>
+      <a href="/user/logout"> Log out</a>
+      <% } %>
+  </div>
+</div>

@@ -14,8 +14,8 @@ router.get('/viewallusers', async (req, res) => {
 
 // //profile show route
 // router.get('/:id', async (req,res) => {
-//   const foundId = await User.findById(req.params.id);
-//   const posts = await Post.find({ user: foundId._id});
+//   const foundId = await User.find(username: req.session.username);
+//   const posts = await Post.find({ user: foundId[0]._id});
 //
 //   if (req.session.logged) {
 //     res.render('users/profile.ejs', {

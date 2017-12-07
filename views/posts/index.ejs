@@ -4,46 +4,43 @@
   <% include ../partials/head.ejs %>
   </head>
   <body>
-    <header>
-
-    <% if (username) { %>
-      Hi, <%= username %>.
-      <br>
-      <a href="/user/logout"> Log out</a>
-      <% } %>
-
-    </header>
+    <div class="container">
     <% include ../partials/header.ejs %>
 
-    <!-- <form action="/posts/seed" method="POST">
+    <form action="/posts/seed" method="POST">
     <input type="submit" value="Seed">
-    </form> -->
+    </form>
 
-<button class="btn btn-success"><a href='/users/profile'>**Broken Profile button**</a></button>
-    <br>
+      <div class="links">
 
-    <button class="btn btn-success"><a href='/posts/new'>Write a new post!</a></button>
+        <a href='/users/profile'>**Broken Profile button**</a>
+      <br>
 
-    <br>
+      <button><a href='/posts/new'>Write a new post!</a></button>
 
-    <% for (let post of posts) { %>
-        <li>
-
-          <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %></h2></a>
-
-          <h4><%= post.user %></h4>
+      </div>
+      <div class="main">
 
 
-          <button class="btn btn-success"><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
+      <% for (let post of posts) { %>
+          <li>
 
-          <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Post">
-          </form>
+            <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %></h2></a>
 
-          <br>
+            <h4>Posted By: <%= post.submitted_by %></h4>
 
-        </li>
-    <% } %>
+
+            <button <a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
+
+            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete Post">
+            </form>
+
+            <br>
+
+          </li>
+      <% } %>
+      </div>
     </div>
   </body>
 </html>

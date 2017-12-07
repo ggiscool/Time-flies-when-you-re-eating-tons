@@ -7,8 +7,9 @@ const postSchema = mongoose.Schema({
   submitted_by: { type: String, require: true },
   location: String,
   link: String,
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-});
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+}, { timestamps: { createdAt: 'created_at' } }
+);
 
 
 module.exports = mongoose.model('Posts', postSchema);

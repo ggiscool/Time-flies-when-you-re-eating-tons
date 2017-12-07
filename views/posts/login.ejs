@@ -4,31 +4,35 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-    <% include ../partials/header.ejs %>
-    <h1>Please Sign In or Register</h1>
-    <hr>
+    <div class="container">
 
-    <% if (message) { %>
-  <%= message %>
-<% } %>
 
-  <h2>Log-In</h2>
-    <form action="/user/login" method="POST">
-      Username: <input name="username" /><br />
-      Password: <input name="password" type="password" /><br />
-
-      <button type="submit">Submit</button>
-      <br>
+      <% include ../partials/header.ejs %>
+      <h1>Please Sign In or Register</h1>
       <hr>
-    </form>
 
-    <br>
+      <% if (message) { %>
+        <%= message %>
+        <% } %>
 
-    <h2>Register</h2>
-    <form action="/user/register" method="POST">
-      Username: <input name="username" /><br />
-      Password: <input name="password" /><br />
-      <button type="submit">REGISTER</button>
-    </form>
+    <h2>Log-In</h2>
+      <form action="/user/login" method="POST">
+        Username: <input name="username" /><br />
+        Password: <input name="password" type="password" /><br />
+
+        <button type="submit">Submit</button>
+        <br>
+        <hr>
+      </form>
+
+      <br>
+
+      <h2>Register</h2>
+      <form action="/user/register" method="POST">
+        Username: <input name="username" /><br />
+        Password: <input name="password" /><br />
+        <button type="submit">REGISTER</button>
+      </form>
+    </div>
   </body>
 </html>
