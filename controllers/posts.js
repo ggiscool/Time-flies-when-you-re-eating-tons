@@ -12,11 +12,13 @@ const User   = require('../models/users.js');
 router.get('/', async (req, res) => {
   //query a post model
   const allPosts = await Post.find().sort( { created_at: -1 } );
+  const foundId = await User.find({username: req.session.username});
   // console.log(allPosts);
   // console.log(req.session.username);
   if (req.session.logged) {
     res.render('posts/index.ejs', {
       posts: allPosts,
+      foundId: foundId,
       username: req.session.username
     });
   } else {

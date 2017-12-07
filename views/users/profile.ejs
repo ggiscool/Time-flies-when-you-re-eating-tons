@@ -7,8 +7,11 @@
 
     <% for (let post of posts) { %>
       <p><%= post.caption %></p>
+      <a href='/posts/<%= post._id %>'><%= post.title %></a>
+      <img src="<%= post.img %>" alt="<%= post.title %>"><br />
 
-    }
+
+    <% } %>
 
       <button <a href='/posts/new'>Write a new post!</a></button>
 

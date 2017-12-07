@@ -7,13 +7,13 @@
     <div class="container">
     <% include ../partials/header.ejs %>
 
-    <form action="/posts/seed" method="POST">
+    <!-- <form action="/posts/seed" method="POST">
     <input type="submit" value="Seed">
-    </form>
+    </form> -->
 
       <div class="links">
 
-        <a href='/users/profile'>**Broken Profile button**</a>
+        <a href='/profile/<%= foundId[0]._id %>'>View My Profile</a>
       <br>
 
       <button><a href='/posts/new'>Write a new post!</a></button>
