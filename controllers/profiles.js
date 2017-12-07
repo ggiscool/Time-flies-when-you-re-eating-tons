@@ -15,7 +15,7 @@ router.get('/viewallusers', async (req, res) => {
 //profile show route
 router.get('/:id', async (req,res) => {
   const foundId = await User.find({username: req.session.username});
-  const posts = await Post.find({ user: foundId[0]._id});
+  const posts = await Post.find({ user: foundId[0]._id}).sort({ created_at: -1});
 
   if (req.session.logged) {
     res.render('users/profile.ejs', {
@@ -28,6 +28,15 @@ router.get('/:id', async (req,res) => {
   };
 });
 
+//post up (new route) ***flawless
+router.post('/:id', async (req, res) => {
+  try {
+    const createdPost = await Post.create(req.body);
+    res.redirect('/:id');
+  } catch (err) {
+    res.send(err.message);
+  }
+});
 
 
 //deletePost
