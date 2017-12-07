@@ -10,19 +10,17 @@
     <!-- <form action="/posts/seed" method="POST">
     <input type="submit" value="Seed">
     </form> -->
-
-      <div class="links">
-
-        <button><a href='/profile/<%= foundId[0]._id %>'>View My Profile</a></button>
-      <br>
-
-      <button><a href='/posts/new'>Write a new post!</a></button>
-
-      </div>
+    
       <div class="main">
+        <h1 class="h1">Post Feed</h1>
 
+        <div class="links">
 
-      <% for (let post of posts) { %>
+          <button><a href='/profile/<%= foundId[0]._id %>'>View My Profile</a></button>
+          <button><a href='/posts/new'>Write a new post!</a></button>
+
+        </div>
+        <% for (let post of posts) { %>
           <li>
 
             <a href="/posts/<%= post._id %>"><h2><%= post.caption %></h2><img src="<%= post.img %>" alt=""> </a>
@@ -30,16 +28,16 @@
             <h4>Posted By: <%= post.submitted_by %></h4>
 
 
-            <button><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
+            <button><a href="/posts/<%=post._id %>/edit">Edit</a> </button>
 
             <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-              <input class="button" type="submit" value="Delete Post">
+              <input class="button" type="submit" value="Delete">
             </form>
 
             <br>
 
           </li>
-      <% } %>
+        <% } %>
       </div>
     </div>
   </body>

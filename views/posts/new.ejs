@@ -10,19 +10,22 @@
       <% include ../partials/header.ejs %>
       <div class="main">
 
-        <button><a href='/posts'>Back to Posts!</a></button>
+        <div class="links">
+          <button><a href='/posts'>Back to Feed!</a></button>
+        </div>
+
         <li>
 
 
         <h1>Write a new Post</h1>
 
         <form action='/posts/' method='post'>
-          <input type="text" name="img" placeholder="Pic URL"/>
-          <input type="text" name="caption" placeholder="Caption"/>
-          <input type="text" name="post" placeholder="Full post text"/>
+          <input type="text" name="img" placeholder="Pic URL"/><br>
+          <input type="text" name="caption" placeholder="Caption"/><br>
+          <input type="text" name="post" placeholder="Full post text"/><br>
           <input type="hidden" name="submitted_by" value="<%= foundId[0].username %>"/>
-          <input type="text" name="location" placeholder="Location of food"/>
-          <input type="text" name="link" placeholder="Link to restaurant"/>
+          <input type="text" name="location" placeholder="Location of food"/><br>
+          <input type="text" name="link" placeholder="Link to restaurant"/><br>
           <input type="hidden" name="user" value="<%= foundId[0]._id %>"/>
 
           <button type="submit">Add Post!</button>
