@@ -72,18 +72,20 @@ router.post('/', async (req, res) => {
 
 //new ROUTES
 router.get('/new', async (req, res) => {
-  const oneUser = await User.find({username: req.session.username});
+  // const oneUser = await User.find({username: req.session.username});
+  const foundId = await User.find({username: req.session.username});
   // const oneUser = req.session.id;
-  console.log("User data ", oneUser);
-  res.render('posts/new.ejs', {oneUser, username: req.session.username});
+  console.log("foundId ", foundId);
+  res.render('posts/new.ejs', {username: req.session.username, foundId: foundId});
 });
 
 //SHOW route
 router.get('/:id', async (req, res) => {
   const onePost = await Post.findById(req.params.id);
+  const foundId = await User.find({username: req.session.username});
   // const comments = await Comment.find({ post:: onPost._id});
 console.log(onePost);
-  res.render('posts/show.ejs', {onePost: onePost, username: req.session.username})
+  res.render('posts/show.ejs', {onePost: onePost, username: req.session.username, foundId: foundId})
 });
 
 
@@ -97,7 +99,8 @@ router.delete('/:id', async (req, res) =>{
 //Find post by id
 router.get('/:id/edit', async (req, res) => {
   const editPost = await Post.findById(req.params.id);
-  res.render('posts/edit.ejs', {Post: editPost, username: req.session.username});
+  const foundId = await User.find({username: req.session.username});
+  res.render('posts/edit.ejs', {Post: editPost, username: req.session.username, foundId: foundId});
 });
 //put new info into body
 router.put('/:id', async (req, res) => {

@@ -8,21 +8,24 @@
 
 
     <% include ../partials/header.ejs %>
-    <h3>Edit</h3>
-    <br>
-    <form action="/posts/<%=Post._id%>?_method=PUT" method="POST">
+    <div class="main">
+      <button><a href="/posts">Back to homepage</a></button>
+      <h2>Edit post below</h2>
+      <br>
+      <form action="/posts/<%=Post._id%>?_method=PUT" method="POST">
 
-      Picture: <input type="text" name="img" value="<%=Post.img%>"/><br/>
-      Caption: <input type="text" name="caption" value="<%=Post.caption%>"/><br/>
-      Post: <input type="text" name="post" value="<%=Post.post%>"/><br/>
-      Submitted by: <input type="text" name="submitted_by" value="<%=Post.submitted_by%>"/><br/>
-      Location: <input type="text" name="location" value="<%=Post.location%>"/><br/>
-      Link: <input type="text" name="link" value="<%=Post.link%>"/></br>
+        Picture: <input type="text" name="img" value="<%=Post.img%>"/><br/>
+        Caption: <input type="text" name="caption" value="<%=Post.caption%>"/><br/>
+        Post: <input type="text" name="post" value="<%=Post.post%>"/><br/>
+        Submitted by: <input type="text" name="submitted_by" value="<%=Post.submitted_by%>"/><br/>
+        Location: <input type="text" name="location" value="<%=Post.location%>"/><br/>
+        Link: <input type="text" name="link" value="<%=Post.link%>"/></br>
 
 
-      <input type="submit" value="Submit Changes"/>
-      <a href="/posts">Back to homepage</a>
-    </form>
+        <input class="button" type="submit" value="Submit Changes"/>
+        </form>
+
+      </div>
     </div>
   </body>
 </html>

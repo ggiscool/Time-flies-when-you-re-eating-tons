@@ -5,7 +5,7 @@
 
   <div class="left">
     <% if (username) { %>
-      Hi, <%= username %>.
+      Hi, <a href='/profile/<%= foundId[0]._id %>'><%= username %></a>!
       <% } %>
   </div>
   <div class="right">

@@ -13,7 +13,7 @@
 
       <div class="links">
 
-        <a href='/profile/<%= foundId[0]._id %>'>View My Profile</a>
+        <button><a href='/profile/<%= foundId[0]._id %>'>View My Profile</a></button>
       <br>
 
       <button><a href='/posts/new'>Write a new post!</a></button>
@@ -25,15 +25,15 @@
       <% for (let post of posts) { %>
           <li>
 
-            <a href="/posts/<%= post._id %>"><img src="<%= post.img %>" alt=""> <h2><%= post.caption %></h2></a>
+            <a href="/posts/<%= post._id %>"><h2><%= post.caption %></h2><img src="<%= post.img %>" alt=""> </a>
 
             <h4>Posted By: <%= post.submitted_by %></h4>
 
 
-            <button <a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
+            <button><a href="/posts/<%=post._id %>/edit">EDIT</a> </button>
 
             <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-              <input type="submit" value="Delete Post">
+              <input class="button" type="submit" value="Delete Post">
             </form>
 
             <br>

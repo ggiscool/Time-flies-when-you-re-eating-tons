@@ -4,19 +4,35 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-
-    <% for (let post of posts) { %>
-      <p><%= post.caption %></p>
-      <a href='/posts/<%= post._id %>'><%= post.title %></a>
-      <img src="<%= post.img %>" alt="<%= post.title %>"><br />
+    <div class="container">
+      <% include ../partials/header.ejs %>
+      <div class="main">
 
 
-    <% } %>
+        <button><a href='/posts'>Back to the Feed!</a></button>
 
-      <button <a href='/posts/new'>Write a new post!</a></button>
+          <% for (let post of posts) { %>
+            <li>
+              <a href="/posts/<%= post._id %>"><h2><%= post.caption %></h2><img src="<%= post.img %>" alt=""> </a>
+              <h3>Location: </h3><h5><%= post.location %></h5>
+              <h3>Link: </h3><h5><%= post.link %></h5>
 
-      <button><a href='/posts'>Back to Posts!</a></button>
+
+              <div class="links">
+                <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                  <input class="button" type="submit" value="Delete Post">
+                </form>
+          </div>
+          <% } %>
+        </li>
 
 
+
+        <div class="links">
+          <button><a href='/posts/new'>Write a new post!</a></button>
+        </div>
+
+      </div>
+    </div>
   </body>
 </html>

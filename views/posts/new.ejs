@@ -7,22 +7,29 @@
     <div class="container">
 
 
-    <% include ../partials/header.ejs %>
-    <h1>Write a new Post</h1>
+      <% include ../partials/header.ejs %>
+      <div class="main">
 
-    <form action='/posts/' method='post'>
-      <input type="text" name="img" placeholder="img"/>
-      <input type="text" name="caption" placeholder="Caption"/>
-      <input type="text" name="post" placeholder="Full post text"/>
-      <input type="hidden" name="submitted_by" value="<%= oneUser[0].username %>"/>
-      <input type="text" name="location" placeholder="Location of food"/>
-      <input type="text" name="link" placeholder="Link to restaurant"/>
-      <input type="hidden" name="user" value="<%= oneUser[0]._id %>"/>
+        <button><a href='/posts'>Back to Posts!</a></button>
+        <li>
 
-      <button type="submit">Add Post!</button>
-    </form>
 
-    <button><a href='/posts'>Back to Posts!</a></button>
+        <h1>Write a new Post</h1>
+
+        <form action='/posts/' method='post'>
+          <input type="text" name="img" placeholder="Pic URL"/>
+          <input type="text" name="caption" placeholder="Caption"/>
+          <input type="text" name="post" placeholder="Full post text"/>
+          <input type="hidden" name="submitted_by" value="<%= foundId[0].username %>"/>
+          <input type="text" name="location" placeholder="Location of food"/>
+          <input type="text" name="link" placeholder="Link to restaurant"/>
+          <input type="hidden" name="user" value="<%= foundId[0]._id %>"/>
+
+          <button type="submit">Add Post!</button>
+        </form>
+</li>
+
+      </div>
     </div>
   </body>
 </html>
