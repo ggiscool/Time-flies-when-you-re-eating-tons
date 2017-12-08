@@ -13,8 +13,8 @@ flex-direction: column;
   /*height: 2em;*/
   /*background-color: #b9c5d5;*/
   background: url("https://cdn.dribbble.com/users/111948/screenshots/2437124/foods.jpg");
-  background-color: rgba(238, 238, 238, 0.81) !important;
-  background-blend-mode: color; 
+  background-color: rgba(238, 238, 238, 0.85) !important;
+  background-blend-mode: color;
   text-align: center;
   font-family: 'Cutive', serif;
   font-size: 20px;
