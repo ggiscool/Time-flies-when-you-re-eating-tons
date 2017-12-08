@@ -26,6 +26,7 @@
             <a href="/posts/<%= post._id %>"><h2><%= post.caption %></h2><img src="<%= post.img %>" alt=""> </a>
 
             <h4>Posted By: <%= post.submitted_by %></h4>
+            <h4>Find it in: <%= post.location %></h4>
 
 
             <button><a href="/posts/<%=post._id %>/edit">Edit</a> </button>
