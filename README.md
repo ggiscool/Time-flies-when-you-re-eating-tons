@@ -17,7 +17,7 @@ Heroku is a cloud platform as a service that I used as my web application deploy
   I had quite a few technical difficulties while building this app. I got held up for days on trying to make a profile page that held only posts made my the user who is signed in, which put me behind a bit. I had a catch error that I couldn't figure out, so I literally just commented everything out and gave up. I came back a few days later and, with some help from classmates, was able to make it work. I am not naturally visually creative, so designing the color scheme for this app was a struggle for me.
 
 ### Future Implementations
-  In the future, I would like to add a comment model, have the user only be able to edit/delete posts and comments that they posted, tag/link to locations of restaurants on Google maps, and improve my css and sense of color.
+  In the future, I would like to add a comment model, have the user only be able to edit/delete posts and comments that they posted, tag/link to locations of restaurants on Google maps, make hover animations, and improve my css and sense of color.
 
 ### Tech Used
   -HTML, CSS, JavaScript, jQuery, Express, Node.js, NPM MongoDB.
