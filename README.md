@@ -4,10 +4,10 @@
 
 
 ### Overview
-  Connect 5 is exactly like Connect 4, except that the board is one spot longer in each direction. Red and Blue players alternate placing pieces on the board, with the goal of getting 5 pieces in a row either vertically, horizontally, or diagonally. In this version, Red goes first upon the start of each new game, and alternates turns with Blue.
+  This a blog about the best foods I've ever eaten. Anyone can make their own account and add their own posts abut their favorite meals they've had. Each post contains a photo, a caption, a blurb about the food, the location they had the food, and a link to the restaurant. There is a news feed of all posts on the site, and a profile page customized to each user, featuring only their posts.
 
 ## Deployment
-  Heroku is a cloud platform as a service that I used as my web application deployment model. To view live, visit xxxxxxxxxxxxx.
+  Heroku is a cloud platform as a service that I used as my web application deployment model. To view live, visit https://timeflieswhenyoureeatingtons.herokuapp.com/.
 
 
 ### Approach
